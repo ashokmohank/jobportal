@@ -1,0 +1,12 @@
+@import 'react-md/src/scss/react-md';
+
+// Variable overrides
+
+$md-light-theme: true; // optional for light theme
+$md-primary-color: $md-red-700;
+$md-secondary-color: $md-lime-a-200;
+
+@include react-md-everything;
+
+// Or for a subsection
+@include react-md-theme-everything($md-red-500, $md-lime-a-200, $md-light-theme, 'custom-theme');

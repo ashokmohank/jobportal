@@ -1,0 +1,33 @@
+{
+  "name": "jobportal",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@appbaseio/reactivesearch": "2.6.8",
+    "axios": "^0.18.0",
+    "react": "16.4.1",
+    "react-dom": "16.4.1",
+    "react-md": "1.4.1",
+    "react-router-dom": "4.3.1",
+    "react-scripts": "1.1.4",
+    "webfontloader": "1.6.28"
+  },
+  "devDependencies": {
+    "node-sass-chokidar": "^0.0.3",
+    "npm-run-all": "^4.1.2",
+    "react-scripts": "1.0.17"
+  },
+  "scripts": {
+    "build-css": "node-sass-chokidar --include-path ./node_modules src/ -o src/",
+    "watch-css": "npm run build-css && npm run build-css -- --watch --recursive",
+    "start-js": "react-scripts start",
+    "start": "npm-run-all -p watch-css start-js",
+    "build": "npm run build-css && react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ashokmohank/jobportal.git"
+  }
+}
