@@ -1,45 +1,25 @@
-import React, { Component } from 'react';
-
-export default class Page2 extends Component {
-  render() {
-    return (
-      <div className="md-grid">
-        <h2 className="md-cell md-cell--12 md-text-container">
-          Page 2
-        </h2>
-        <p className="md-cell md-cell--12 md-text-container">
-          Here is some text for the second page. It is quite
-          beautiful.
-        </p>
-      </div>
-    );
-  }
-}
+import React, { PureComponent } from 'react';
+import './searchjob.css';
 
 var CONTACTS = [{
   id: 1,
-  name: 'Apple',
-  phoneNumber: 'IOS',
+  name: 'iOS App Developer',
+  phoneNumber: 'IOS Developer with 7 year experience',
   image: 'https://cdn.worldvectorlogo.com/logos/apple.svg'
 }, {
   id: 2,
-  name: 'Google',
-  phoneNumber: 'Android',
+  name: 'Android Developer',
+  phoneNumber: 'Android Admin with2 year Experience',
   image: 'https://cdn.worldvectorlogo.com/logos/android.svg'
 }, {
   id: 3,
-  name: 'Microsoft',
-  phoneNumber: 'Windows mobile',
+  name: 'C# Developer',
+  phoneNumber: 'Expert in leading MVVM with C# .net framework',
   image: 'https://cdn.worldvectorlogo.com/logos/windows.svg'
-}, {
-  id: 4,
-  name: 'Blackberry',
-  phoneNumber: 'Blackberry OS',
-  image: 'https://cdn.worldvectorlogo.com/logos/bbm-blackberry-messenger.svg'
 }];
 
-var Contact = React.createClass({
-  render: function() {
+class Contact extends PureComponent{
+  render() {
     return (
       <li className="contact">
         <img src={this.props.image} width="60px" height="60px" className="contact-image"/>
@@ -50,17 +30,25 @@ var Contact = React.createClass({
       </li>
     );
   }
-});
+};
 
-var ContactsList = React.createClass({
-  getInitialState: function() {
-    return {
-      displayedContacts: CONTACTS
-    };
 
-  },
+  class ContactsList extends PureComponent{
+    constructor(props) {
+      super(props);
+      this.handleSearch = this.handleSearch.bind(this);
 
-  handleSearch: function(event) {
+      this.state = { displayedContacts: CONTACTS };
+  }
+    
+    componentDidMount() {
+      // Need to set the renderNode since the drawer uses an overlay
+      //this.displayedContacts = CONTACTS
+    }
+    
+
+
+  handleSearch(event) {
     var searchQuery = event.target.value.toLowerCase();
     var displayedContacts = CONTACTS.filter(function(el) {
       var searchValue = el.name.toLowerCase();
@@ -71,12 +59,12 @@ var ContactsList = React.createClass({
     this.setState({
       displayedContacts: displayedContacts
     });
-  },
+  }
 
-  render: function() {
+  render() {
     return (
       <div className="contacts">
-        <input type="text" className="search-field" onChange={this.handleSearch}/>
+        <input type="text" className="search-field" placeholder="Search Jobs" onChange={this.handleSearch}/>
         <ul className="contacts-list">
           {
             this.state.displayedContacts.map(function(el) {
@@ -92,6 +80,6 @@ var ContactsList = React.createClass({
       </div>
     );
   }
-});
+};
 
 export default ContactsList;

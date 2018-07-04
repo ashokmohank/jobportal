@@ -7,8 +7,8 @@ import { Link, Route, Switch } from 'react-router-dom';
 import { Button, Drawer, Toolbar } from 'react-md';
 import NavLink from './NavLink';
 import Home from './Home';
-import Page1 from './Page1';
-import Page2 from './Page2';
+import Page1 from './JobStatus';
+import Page2 from './SearchJob';
 import Page3 from './Page3';
 import CreateProfile from './CreateProfile';
 import CreateJob from './CreateJob';
@@ -20,12 +20,12 @@ const navItems = [{
   to: '/',
   icon: 'home',
 }, {
-  label: 'Page 1',
+  label: 'JobStatus',
   to: '/page-1',
   icon: 'bookmark',
 }, {
-  label: 'Page 2',
-  to: '/page-2',
+  label: 'SearchJob',
+  to: '/SearchJob',
   icon: 'donut_large',
 }, {
   label: 'Page 3',

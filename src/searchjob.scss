@@ -1,0 +1,38 @@
+//colors
+$gray: #808080;
+
+//fonts
+$font_0: sans-serif;
+
+.contacts {
+	width: 700px;
+	margin: 0 auto;
+}
+.search-field {
+	width: 100%;
+	padding: 10px;
+	font-size: 16px;
+}
+.contacts-list {
+	padding: 0;
+	width: 100%;
+}
+.contact {
+	display: flex;
+	align-items: center;
+	font-family: $font_0;
+	width: 100%;
+	padding: 5px;
+	border-bottom: 1px dotted $gray;
+}
+.contact-image {
+	margin: 5px;
+}
+.contact-name {
+	font-size: 20px;
+	font-weight: bold;
+}
+.contact-number {
+	font-size: 18px;
+	color: $gray;
+}
