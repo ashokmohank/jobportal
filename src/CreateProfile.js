@@ -6,7 +6,10 @@ import {
     FontIcon,
     SVGIcon,
     TextField,
+    Autocomplete
   } from 'react-md';
+  
+  import { programmingLanguages } from 'constants'
 export default class CreateProfile extends Component {
 
     constructor(props) {
@@ -66,7 +69,13 @@ export default class CreateProfile extends Component {
                         className="md-cell md-cell--6"
                         value={this.state.lastname}  onChange={this.onChangeLastName}
                     />
-                   
+                   <Autocomplete
+                        id="programming-languages"
+                        label="Programming languages"
+                        placeholder="Javascript"
+                        data={programmingLanguages}
+                        filter={Autocomplete.caseInsensitiveFilter}
+                        />
                     <div className="form-group">
                         <input type="submit" value="Add Node server" className="btn btn-primary"/>
                     </div>

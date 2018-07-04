@@ -12,6 +12,7 @@ import Page2 from './Page2';
 import Page3 from './Page3';
 import CreateProfile from './CreateProfile';
 import CreateJob from './CreateJob';
+import logo from './logo.svg';
 
 const navItems = [{
   exact: true,
@@ -69,7 +70,7 @@ class App extends PureComponent {
 
     return (
       <div>
-        <Toolbar colored fixed title="Routing Example" nav={<Button icon onClick={this.showDrawer}>menu</Button>} />
+        <Toolbar colored fixed title="Verizon Talent Aquisition" nav={<Button icon onClick={this.showDrawer}>menu</Button>} />
         <CSSTransitionGroup
           component="div"
           transitionName="md-cross-fade"
@@ -90,7 +91,7 @@ class App extends PureComponent {
           type={Drawer.DrawerTypes.TEMPORARY}
           visible={visible}
           onVisibilityChange={this.handleVisibility}
-          header={<Toolbar title={<Link to="/components/drawers#react-router-example">Drawer examples</Link>} />}
+          header={<img src={logo} className="App-logo" alt="Verizon Talent Aquisition- by Code Squad" />}
           renderNode={this.dialog}
           navItems={navItems.map(props => <NavLink {...props} key={props.to} />)}
         />
