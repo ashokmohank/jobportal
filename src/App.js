@@ -11,6 +11,7 @@ import Page1 from './Page1';
 import Page2 from './Page2';
 import Page3 from './Page3';
 import CreateProfile from './CreateProfile';
+import CreateJob from './CreateJob';
 
 const navItems = [{
   exact: true,
@@ -32,6 +33,10 @@ const navItems = [{
 }, {
   label: 'Create Profile',
   to: '/profile',
+  icon: 'bookmark',
+}, {
+  label: 'Create Job',
+  to: '/createjob',
   icon: 'bookmark',
 }];
 
@@ -78,6 +83,7 @@ class App extends PureComponent {
             <Route path={navItems[2].to} component={Page2} />
             <Route path={navItems[3].to} component={Page3} />
             <Route path={navItems[4].to} component={CreateProfile} />
+            <Route path={navItems[5].to} component={CreateJob} />
           </Switch>
         </CSSTransitionGroup>
         <Drawer
