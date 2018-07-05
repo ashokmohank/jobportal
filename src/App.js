@@ -35,7 +35,7 @@ const navItems = [{
 }, {
   label: 'Create Profile',
   to: '/profile',
-  icon: 'bookmark',
+  icon: 'account_box',
 }, {
   label: 'Create Job',
   to: '/createjob',
@@ -43,7 +43,7 @@ const navItems = [{
 }, {
   label: 'Analytics',
   to: '/analytics',
-  icon: 'search',
+  icon: 'assessment',
 }];
 
 class App extends PureComponent {

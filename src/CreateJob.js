@@ -61,7 +61,8 @@ export default class CreateJob extends Component {
             description: this.state.description,
             designation: this.designation,
             experience: this.experience,
-            salary: this.salary
+            salary: this.salary,
+            image: 'https://cdn.worldvectorlogo.com/logos/verizon.svg'
         }
         axios.post('http://localhost:8080/api/v1/job/create', user_data)
         .then(res => console.log(res.data));

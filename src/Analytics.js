@@ -8,7 +8,7 @@ export default class Analytics extends Component {
     return (
       <div >
         <h2 >
-          Configuration
+          Applicant Analytics
         </h2>
        
         <TabsContainer panelClassName="md-grid" colored>
