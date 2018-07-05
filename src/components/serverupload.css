@@ -1,0 +1,15 @@
+.file-inputs__upload-form {
+  display: flex;
+  flex-wrap: wrap;
+  padding-top: 2em;
+  position: relative; }
+  .file-inputs__upload-form__progress {
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0; }
+  .file-inputs__upload-form__file-upload {
+    flex-shrink: 0; }
+  .file-inputs__upload-form__file-field {
+    flex-grow: 1;
+    margin-left: 2; }
