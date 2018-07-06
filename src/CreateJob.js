@@ -59,9 +59,9 @@ export default class CreateJob extends Component {
         const user_data = {
             jobName: this.state.jobname,
             description: this.state.description,
-            designation: this.designation,
-            experience: this.experience,
-            salary: this.salary,
+            designation: this.state.designation,
+            experience: this.state.experience,
+            salary: this.state.salary,
             image: 'https://cdn.worldvectorlogo.com/logos/verizon.svg'
         }
         axios.post('http://localhost:8080/api/v1/job/create', user_data)

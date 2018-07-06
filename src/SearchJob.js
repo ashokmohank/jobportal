@@ -1,31 +1,20 @@
+
 import React, { PureComponent } from 'react';
+import axios from 'axios';
+import searchJobImg from './JobSearch.svg'
 import './searchjob.css';
 
-var CONTACTS = [{
-  id: 1,
-  name: 'iOS App Developer',
-  phoneNumber: 'IOS Developer with 7 year experience',
-  image: 'https://cdn.worldvectorlogo.com/logos/apple.svg'
-}, {
-  id: 2,
-  name: 'Android Developer',
-  phoneNumber: 'Android Admin with2 year Experience',
-  image: 'https://cdn.worldvectorlogo.com/logos/android.svg'
-}, {
-  id: 3,
-  name: 'C# Developer',
-  phoneNumber: 'Expert in leading MVVM with C# .net framework',
-  image: 'https://cdn.worldvectorlogo.com/logos/windows.svg'
-}];
 
 class Contact extends PureComponent{
+  
+
   render() {
     return (
       <li className="contact">
-        <img src={this.props.image} width="60px" height="60px" className="contact-image"/>
+        <img src={searchJobImg} width="60px" height="60px" className="contact-image"/>
         <div className="contact-info">
-          <div className="contact-name">{this.props.name}</div>
-          <div className="contact-number">{this.props.phoneNumber}</div>
+          <div className="contact-name">{this.props.jobName}</div>
+          <div className="contact-number">{this.props.description}</div>
         </div>
       </li>
     );
@@ -38,27 +27,72 @@ class Contact extends PureComponent{
       super(props);
       this.handleSearch = this.handleSearch.bind(this);
 
-      this.state = { displayedContacts: CONTACTS };
-  }
-    
-    componentDidMount() {
-      // Need to set the renderNode since the drawer uses an overlay
-      //this.displayedContacts = CONTACTS
+      this.state = { jobPostings: [] };
     }
-    
+
+
+  componentDidMount() {
+
+    var that = this;
+    axios
+      .get(
+        "http://localhost:8080/api/v1/job/list",
+        {
+          headers: {
+            "Content-Type": "application/json"
+          }
+        }
+      )
+      .then(function(response) {
+        console.log(response.data);
+        // handle success
+        that.setState({ jobPostings: response.data });
+      })
+      .catch(function(error) {
+        // handle error
+        console.log(error);
+      })
+      .then(function() {
+        // always executed
+      });
+  }  
 
 
   handleSearch(event) {
     var searchQuery = event.target.value.toLowerCase();
-    var displayedContacts = CONTACTS.filter(function(el) {
-      var searchValue = el.name.toLowerCase();
+    var jobPostings = this.state.jobPostings.filter(function(el) {
+      var searchValue = el.jobName.toLowerCase();
 
       return searchValue.indexOf(searchQuery) !== -1;
     });
 
     this.setState({
-      displayedContacts: displayedContacts
+      jobPostings: jobPostings
     });
+    if(searchQuery === ""){
+      var that = this;
+    axios
+      .get(
+        "http://localhost:8080/api/v1/job/list",
+        {
+          headers: {
+            "Content-Type": "application/json"
+          }
+        }
+      )
+      .then(function(response) {
+        console.log(response.data);
+        // handle success
+        that.setState({ jobPostings: response.data });
+      })
+      .catch(function(error) {
+        // handle error
+        console.log(error);
+      })
+      .then(function() {
+        // always executed
+      });
+    }
   }
 
   render() {
@@ -67,11 +101,11 @@ class Contact extends PureComponent{
         <input type="text" className="search-field" placeholder="Search Jobs" onChange={this.handleSearch}/>
         <ul className="contacts-list">
           {
-            this.state.displayedContacts.map(function(el) {
+            this.state.jobPostings.map(function(el) {
               return <Contact 
-                key={el.id} 
-                name={el.name} 
-                phoneNumber={el.phoneNumber} 
+                key={el._id} 
+                jobName={el.jobName} 
+                description={el.description} 
                 image={el.image}
               />;
             })
